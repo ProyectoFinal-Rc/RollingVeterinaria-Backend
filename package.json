@@ -1,24 +1,25 @@
 {
-  "name": "rollingveterinaria--backend",
+  "name": "12-backendcafecito",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend del proyecto cafecito c42i",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "babel-node index.js",
+    "dev": "nodemon --exec babel-node index.js"
   },
   "keywords": [],
-  "author": "Cristian Gramajo, Juan Llanos, Juan Alba,Malena de Arriba,Mauricio Soria",
+  "author": "Cristian Gramajo",
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "bcrypt": "^5.1.0",
+    "babel-preset-env": "^1.4.0",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
     "jsonwebtoken": "^9.0.1",
-    "mongoose": "^7.4.0",
+    "mongoose": "^7.3.1",
     "morgan": "^1.10.0"
   }
 }

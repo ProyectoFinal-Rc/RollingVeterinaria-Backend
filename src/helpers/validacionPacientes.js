@@ -74,7 +74,12 @@ const validaPaciente = [
           }
         })),
 
-        
+        check("plan")
+        .notEmpty()
+        .withMessage("El plan es un campo obligatorio")
+        .isIn(["primeros Pasos (0-5 años)", "madurando (5-10 años)", "adultos (10 en adelante"])
+        .withMessage("Debe ingresar un plan valido"),
+        (req, res, next) => { resultadoValidacion(req, res, next) }
 ]
 
 export default validaPaciente;

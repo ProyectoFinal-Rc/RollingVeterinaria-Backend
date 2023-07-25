@@ -47,6 +47,14 @@ const validaPaciente = [
         .isIn(["mamiferos", "aves", "reptiles", "peces"])
         .withMessage("Debe ingresar una especie valida"),
 
+        check("raza")
+        .notEmpty()
+        .withMessage("La raza de la mascota es un dato obligatorio")
+        .isLength({ min: 2, max: 30 })
+        .withMessage(
+            "La raza de la mascota debe tener entre 2 y 30 caracteres como maximo"
+        ),
+
         
 ]
 

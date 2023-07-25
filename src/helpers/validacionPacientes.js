@@ -41,6 +41,12 @@ const validaPaciente = [
             "El nombre de la mascota debe tener entre 2 y 30 caracteres como maximo"
         ),
 
+        check("especie")
+        .notEmpty()
+        .withMessage("La especie es un campo obligatorio")
+        .isIn(["mamiferos", "aves", "reptiles", "peces"])
+        .withMessage("Debe ingresar una especie valida"),
+
         
 ]
 

@@ -19,6 +19,12 @@ const validaPaciente = [
             "El apellido del dueño debe tener entre 2 y 30 caracteres como maximo"
         ),
 
+        check("email")
+        .notEmpty()
+        .withMessage("La email es un dato obligatorio")
+        .matches(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=? ^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a -z0-9](?:[a-z0-9-]*[a-z0-9])?$/)
+        .withMessage("El email debe tener el siguiente formato: mail@dominio.com"),
+
     
 ]
 

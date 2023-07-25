@@ -23,6 +23,14 @@ const validarPaciente = [
         .withMessage("La email es un dato obligatorio")
         .matches(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=? ^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a -z0-9](?:[a-z0-9-]*[a-z0-9])?$/)
         .withMessage("El email debe tener el siguiente formato: mail@dominio.com"),
+
+        check("direccion")
+        .notEmpty()
+        .withMessage("La direccion es un dato obligatorio")
+        .isLength({ min: 2, max: 50 })
+        .withMessage(
+            "La direccion debe tener entre 2 y 50 caracteres como maximo"
+        ),
 ]
 
 export default validarPaciente;

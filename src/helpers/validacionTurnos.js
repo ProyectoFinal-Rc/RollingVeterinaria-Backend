@@ -10,7 +10,10 @@ const validarTurno = [
         ),
     check(veterinario)
     .notEmpty()
-    .withMessage("El veterinario es o")
+    .withMessage("El veterinario es obligatorio")
+    .isIn(["karen diaz", "gerardo marruecos"])
+    .withMessage("Debe ingresar una categoria valida"),
+    
 ]
 
 export default validarTurno;

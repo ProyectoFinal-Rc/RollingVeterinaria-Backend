@@ -53,6 +53,12 @@ const validarPaciente = [
         .withMessage(
             "La raza de la mascota debe tener entre 2 y 30 caracteres como maximo"
         ),
+
+        check("fechaNacimiento")
+        .notEmpty()
+        .withMessage("La fecha de nacimiento es obligatoria")
+        .matches(/^(?:\d{4})\/(?:0[1-9]|1[0-2])\/(?:0[1-9]|[1-2][0-9]|3[0-1])$/)
+        .withMessage("La fecha de nacimiento debe tener el siguiente formato AAAA/MM/DD"),
 ]
 
 export default validarPaciente;

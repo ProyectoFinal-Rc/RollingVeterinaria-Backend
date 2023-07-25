@@ -1,0 +1,14 @@
+import { check } from "express-validator";
+import resultadoValidacion from "./resultadoValidacion";
+
+const validarPaciente = [
+    check("nombreDuenio")
+        .notEmpty()
+        .withMessage("El nombre del dueño es un dato obligatorio")
+        .isLength({ min: 2, max: 30 })
+        .withMessage(
+            "El nombre del dueño debe tener entre 2 y 30 caracteres como maximo"
+        ),
+]
+
+export default validarPaciente;

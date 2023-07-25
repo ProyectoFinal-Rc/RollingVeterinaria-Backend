@@ -61,6 +61,19 @@ const validaPaciente = [
         .matches(/^(?:\d{4})\/(?:0[1-9]|1[0-2])\/(?:0[1-9]|[1-2][0-9]|3[0-1])$/)
         .withMessage("La fecha de nacimiento debe tener el siguiente formato AAAA/MM/DD"),
 
+        check("peso")
+        .notEmpty()
+        .withMessage('El peso es un dato obligatorio')
+        .isNumeric()
+        .withMessage('El peso debe ser un número')
+        .custom(((value)=>{
+          if( value >= 1 && value<=100){
+            return true;
+          }else{
+            throw new Error('El peso debe estar entre 1 y 100')
+          }
+        })),
+
         
 ]
 

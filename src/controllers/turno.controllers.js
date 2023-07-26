@@ -15,6 +15,18 @@ export const crearTurno = async (req, res) => {
 	}
 }
 
+export const obtenerTurno = async (req, res) => {
+	try {
+		const turno = await Turno.findById(req.params.id);
+		res.status(200).json(turno);
+	} catch (error) {
+		console.log(error);
+		res.status(404).json({
+			mensaje: 'Error al buscar el turno.'
+		})
+	}
+}
+
 export const obtenerTurnos = async (req, res) => {
 	try {
 		const listaTurnos = await Turno.find();

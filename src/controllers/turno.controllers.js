@@ -14,3 +14,15 @@ export const crearTurno = async (req, res) => {
 		})
 	}
 }
+
+export const obtenerTurnos = async (req, res) => {
+	try {
+		const listaTurnos = await Turno.find();
+		res.status(200).json(listaTurnos)
+	} catch (error) {
+		console.error(error);
+		res.status(404).json({
+			mensaje: 'Error al buscar los productos'
+		})
+	}
+}

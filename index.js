@@ -5,7 +5,6 @@ import mongoose from "mongoose"
 import  path  from "path"
 import loginRouter from './src/routes/login.routes'
 import usuariosRouter from './src/routes/usuarios.routes'
-import turnoRouter from './src/routes/turno.routes'
 import 'dotenv/config'
 import "./src/database/dbConnection"
 

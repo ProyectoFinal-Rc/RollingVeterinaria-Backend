@@ -22,7 +22,7 @@ export const obtenerTurnos = async (req, res) => {
 	} catch (error) {
 		console.error(error);
 		res.status(404).json({
-			mensaje: 'Error al buscar los productos'
+			mensaje: 'Error al buscar los tunos'
 		})
 	}
 }

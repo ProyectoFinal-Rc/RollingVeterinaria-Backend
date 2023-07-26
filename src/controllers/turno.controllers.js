@@ -12,6 +12,5 @@ export const crearTurno = async (req, res) => {
 		res.status(404).json({
 			mensaje: 'Error al crear el turno.'
 		})
-		
 	}
 }

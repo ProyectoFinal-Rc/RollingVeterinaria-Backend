@@ -22,7 +22,21 @@ export const obtenerTurnos = async (req, res) => {
 	} catch (error) {
 		console.error(error);
 		res.status(404).json({
-			mensaje: 'Error al buscar los tunos'
+			mensaje: 'Error al buscar los tunos.'
+		})
+	}
+}
+
+export const borrarTurno = async (req, res) => {
+	try {
+		await Turno.findByIdAndRemove(req.params.id)
+		req.status(200).json({
+			mensaje: 'El turno fue eliminado correctamente.'
+		});
+	} catch (error) {
+		console.log(error);
+		res.status(404).json({
+			mensaje: 'Error al emininar el turno.'
 		})
 	}
 }

@@ -67,7 +67,9 @@ export const modificarUsuario = async (req, res) => {
     ).select("-password");
     if (usuario) {
       console.log("se modificó");
-      res.status(200).json(usuario);
+      res.status(200).json({
+        mensaje:"Se modificó correctamente"
+      });
     } else {
       console.log("no se modificó");
       res.status(404).json({ mensaje: "no se encontró nada" });
@@ -86,7 +88,9 @@ export const eliminarUsuario = async (req, res) => {
     const usuario = await Usuario.findByIdAndDelete(req.params.id);
     if (usuario) {
       console.log("se eliminó");
-      res.status(200).json(usuario);
+      res.status(200).json({
+        mensaje:"Se eliminó correctamente"
+      });
     } else {
       console.log("no se eliminó");
       res.status(404).json({ mensaje: "no se encontró nada" });

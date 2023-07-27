@@ -42,11 +42,11 @@ const pacienteSchema = new Schema({
     required: true,
   },
   fechaNacimiento: {
-    type: date,
+    type: Date,
     required: true,
   },
   peso: {
-    type: number,
+    type: Number,
     minLength: 1,
     maxLength: 100,
     required: true,

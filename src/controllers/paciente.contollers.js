@@ -17,8 +17,8 @@ export const crearPaciente = async (req, res) => {
 
 export const obtenerPaciente = async (req, res) => {
   try {
-    const Paciente = await Paciente.findById(req.params.id);
-    res.status(200).json(Paciente);
+    const paciente = await Paciente.findById(req.params.id);
+    res.status(200).json(paciente);
   } catch (error) {
     console.log(error);
     res.status(404).json({
@@ -56,7 +56,7 @@ export const editarPaciente = async (req, res) => {
 export const borrarPaciente = async (req, res) => {
   try {
     await Paciente.findByIdAndRemove(req.params.id);
-    req.status(200).json({
+    res.status(200).json({
       mensaje: "El paciente fue eliminado correctamente.",
     });
   } catch (error) {

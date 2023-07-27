@@ -6,7 +6,6 @@ import { adminTokenStatus, userTokenStatus } from "../helpers/tokenFunctions";
 
 // CREATE
 export const loguearUsuario = async (req, res) => {
-  console.log(req.body);
   try {
     const usuario = await Usuario.findOne({ email: req.body.email });
     if (usuario) {
@@ -31,7 +30,6 @@ export const loguearUsuario = async (req, res) => {
         res.status(401).json({ mensaje: "contraseña incorrecta" });
       }
     } else {
-      console.log("no se creó");
       res.status(404).json({ mensaje: "no se encontró usuario" });
     }
   } catch (error) {

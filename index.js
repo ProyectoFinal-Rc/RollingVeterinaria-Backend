@@ -5,6 +5,7 @@ import mongoose from "mongoose"
 import  path  from "path"
 import loginRouter from './src/routes/login.routes'
 import usuariosRouter from './src/routes/usuarios.routes'
+import publicacionRouter from './src/routes/publicaciones.routes'
 import 'dotenv/config'
 import "./src/database/dbConnection"
 
@@ -22,5 +23,6 @@ app.use(express.static(path.join(__dirname,"/public")))
 
 app.use('/api/auth', loginRouter)
 app.use('/api/usuario', usuariosRouter)
+app.use('/api/publicacion', publicacionRouter)
 //Rutas
 //http:/localhost:4000/

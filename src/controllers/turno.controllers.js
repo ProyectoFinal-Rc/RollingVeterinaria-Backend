@@ -8,9 +8,8 @@ export const crearTurno = async (req, res) => {
 			mensaje: 'El turno se creo con exito.'
 		})
 	} catch (error) {
-		console.log(error);
 		res.status(404).json({
-			mensaje: 'Error al crear el turno.'
+			mensaje: 'Error al crear el turno: '+error.message
 		})
 	}
 }
@@ -18,11 +17,15 @@ export const crearTurno = async (req, res) => {
 export const obtenerTurno = async (req, res) => {
 	try {
 		const turno = await Turno.findById(req.params.id);
-		res.status(200).json(turno);
+		if(turno){
+			res.status(200).json(turno);
+		}else{
+			res.status(404).json({mensaje:"No se econtró coincidencia"});
+		}
+		
 	} catch (error) {
-		console.log(error);
-		res.status(404).json({
-			mensaje: 'Error al buscar el turno.'
+		res.status(500).json({
+			mensaje: 'Error al buscar el turno: '+error.message
 		})
 	}
 }
@@ -30,39 +33,47 @@ export const obtenerTurno = async (req, res) => {
 export const obtenerTurnos = async (req, res) => {
 	try {
 		const listaTurnos = await Turno.find();
-		res.status(200).json(listaTurnos)
+		if(listaTurnos){
+			res.status(200).json(listaTurnos)
+		}else{
+			res.status(404).json({mensaje: "no se encontraron coincidencias"})
+		}
+		
 	} catch (error) {
-		console.error(error);
-		res.status(404).json({
-			mensaje: 'Error al buscar los tunos.'
+		res.status(500).json({
+			mensaje: 'Error al buscar los tunos: '+error.message
 		})
 	}
 }
 
 export const editarTurno = async (req, res) => {
 	try {
-		await Turno.findByIdAndUpdate(req.params.id, req.body);
-		res.status(200).json({
-			mensaje: 'El turno se modifico correctamente.'
-		})
+		let resp = await Turno.findByIdAndUpdate(req.params.id, req.body);
+		if(resp){
+			res.status(200).json({mensaje: 'El turno se modifico correctamente.'})
+		}else{
+			res.status(404).json({mensaje: 'No se encontró turno'})
+		}
+		
 	} catch (error) {
-		console.log(error);
-		res.status(400).json({
-			mensaje: 'Error al intentar editar el turno.'
+		res.status(500).json({
+			mensaje: 'Error al intentar editar el turno: '+error.message
 		})
 	}
 }
 
 export const borrarTurno = async (req, res) => {
 	try {
-		await Turno.findByIdAndRemove(req.params.id)
-		res.status(200).json({
-			mensaje: 'El turno fue eliminado correctamente.'
-		});
+		let resp = await Turno.findByIdAndRemove(req.params.id)
+		if(resp){
+			res.status(200).json({mensaje: 'El turno fue eliminado correctamente.'});
+		}else{
+			res.status(404).json({mensaje: 'No se encontró turno.'});
+		}
+		
 	} catch (error) {
-		console.log(error);
 		res.status(404).json({
-			mensaje: 'Error al emininar el turno.'
+			mensaje: 'Error al emininar el turno: '+error.message
 		})
 	}
 }

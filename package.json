@@ -1,7 +1,7 @@
 {
-  "name": "12-backendcafecito",
+  "name": "rolling-vet",
   "version": "1.0.0",
-  "description": "Backend del proyecto cafecito c42i",
+  "description": "Backend del proyecto Rolling Vet",
   "main": "index.js",
   "scripts": {
     "start": "babel-node index.js",

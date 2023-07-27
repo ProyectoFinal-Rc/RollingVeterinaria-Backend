@@ -8,9 +8,8 @@ export const crearPaciente = async (req, res) => {
       mensaje: "El Paciente se creo con exito.",
     });
   } catch (error) {
-    console.log(error);
-    res.status(404).json({
-      mensaje: "Error al crear el paciente.",
+    res.status(500).json({
+      mensaje: "Error al crear el paciente: "+error.message,
     });
   }
 };
@@ -18,11 +17,16 @@ export const crearPaciente = async (req, res) => {
 export const obtenerPaciente = async (req, res) => {
   try {
     const paciente = await Paciente.findById(req.params.id);
-    res.status(200).json(paciente);
+
+    if(paciente){
+      res.status(200).json(paciente);
+		}else{
+			res.status(404).json({mensaje:"No se econtró coincidencia"});
+		}
+    
   } catch (error) {
-    console.log(error);
-    res.status(404).json({
-      mensaje: "Error al buscar el paciente.",
+    res.status(500).json({
+      mensaje: "Error al buscar el paciente: "+error.message,
     });
   }
 };
@@ -30,25 +34,30 @@ export const obtenerPaciente = async (req, res) => {
 export const obtenerPacientes = async (req, res) => {
   try {
     const listaPacientes = await Paciente.find();
-    res.status(200).json(listaPacientes);
+    if(listaPacientes){
+      res.status(200).json(listaPacientes);
+    }else{
+      res.status(404).json({mensaje:"No se encontraron pacientes"});
+    }
+    
   } catch (error) {
-    console.error(error);
-    res.status(404).json({
-      mensaje: "Error al buscar los pacientes.",
+    res.status(500).json({
+      mensaje: "Error al buscar los pacientes: "+error.message,
     });
   }
 };
 
 export const editarPaciente = async (req, res) => {
   try {
-    await Paciente.findByIdAndUpdate(req.params.id, req.body);
-    res.status(200).json({
-      mensaje: "El paciente se modifico correctamente.",
-    });
+    let resp = await Paciente.findByIdAndUpdate(req.params.id, req.body);
+    if(resp){
+      res.status(200).json({mensaje: "El paciente se modifico correctamente."});
+    }else{
+      res.status(404).json({mensaje: "No se encontró el paciente."});
+    }    
   } catch (error) {
-    console.log(error);
     res.status(400).json({
-      mensaje: "Error al intentar editar el paciente.",
+      mensaje: "Error al intentar editar el paciente: "+error.message,
     });
   }
 };
@@ -60,9 +69,8 @@ export const borrarPaciente = async (req, res) => {
       mensaje: "El paciente fue eliminado correctamente.",
     });
   } catch (error) {
-    console.log(error);
-    res.status(404).json({
-      mensaje: "Error al eliminar el paciente.",
+    res.status(500).json({
+      mensaje: "Error al eliminar el paciente: "+error.message,
     });
   }
 };

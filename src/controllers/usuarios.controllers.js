@@ -8,10 +8,8 @@ export const crearUsuario = async (req, res) => {
     req.body.password = hashSync(req.body.password, salt);
     const usuario = await Usuario.create(req.body);
     if (usuario) {
-      console.log("se creó");
       res.status(200).json({ mensaje: "Se creo correctamente" });
     } else {
-      console.log("no se creó");
       res.status(404).json({ mensaje: "no se encontró nada" });
     }
   } catch (error) {
@@ -26,14 +24,12 @@ export const obtenerUsuarios = async (req, res) => {
   try {
     const usuarios = await Usuario.find().select("-password");
     if (usuarios) {
-      console.log("encontró");
       res.status(200).json(usuarios);
     } else {
-      console.log("no encontró");
       res.status(404).json({ mensaje: "no se encontró nada" });
     }
   } catch (error) {
-    res.status(400).json({
+    res.status(500).json({
       mensaje: "Error al buscar los usuarios " + error.message,
     });
   }
@@ -43,14 +39,12 @@ export const obtenerUsuario = async (req, res) => {
   try {
     const usuario = await Usuario.findById(req.params.id).select("-password");
     if (usuario) {
-      console.log("encontró");
       res.status(200).json(usuario);
     } else {
-      console.log("no encontró");
       res.status(404).json({ mensaje: "no se encontró nada" });
     }
   } catch (error) {
-    res.status(400).json({
+    res.status(500).json({
       mensaje: "Error al buscar el usuario " + error.message,
     });
   }
@@ -66,12 +60,10 @@ export const modificarUsuario = async (req, res) => {
       req.body
     ).select("-password");
     if (usuario) {
-      console.log("se modificó");
       res.status(200).json({
         mensaje:"Se modificó correctamente"
       });
     } else {
-      console.log("no se modificó");
       res.status(404).json({ mensaje: "no se encontró nada" });
     }
   } catch (error) {
@@ -87,12 +79,8 @@ export const eliminarUsuario = async (req, res) => {
     //const usuario = await Usuario.findById(req.params.id);
     const usuario = await Usuario.findByIdAndDelete(req.params.id);
     if (usuario) {
-      console.log("se eliminó");
-      res.status(200).json({
-        mensaje:"Se eliminó correctamente"
-      });
+      res.status(200).json({mensaje:"Se eliminó correctamente"});
     } else {
-      console.log("no se eliminó");
       res.status(404).json({ mensaje: "no se encontró nada" });
     }
   } catch (error) {

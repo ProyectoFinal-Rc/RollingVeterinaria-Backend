@@ -53,3 +53,16 @@ export const editarPaciente = async (req, res) => {
 	}
 }
 
+export const borrarPaciente = async (req, res) => {
+	try {
+		await Paciente.findByIdAndRemove(req.params.id)
+		req.status(200).json({
+			mensaje: 'El paciente fue eliminado correctamente.'
+		});
+	} catch (error) {
+		console.log(error);
+		res.status(404).json({
+			mensaje: 'Error al eliminar el paciente.'
+		})
+	}
+}

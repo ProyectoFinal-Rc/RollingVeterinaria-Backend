@@ -8,10 +8,8 @@ export const crearUsuario = async (req, res) => {
     req.body.password = hashSync(req.body.password, salt);
     const usuario = await Usuario.create(req.body);
     if (usuario) {
-      console.log("se creó");
       res.status(200).json({ mensaje: "Se creo correctamente" });
     } else {
-      console.log("no se creó");
       res.status(404).json({ mensaje: "no se encontró nada" });
     }
   } catch (error) {

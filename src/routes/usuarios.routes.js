@@ -4,7 +4,7 @@ import validarUsuario from "../helpers/validacionUsuario";
 
 const router = Router();
 
-router.route('/').post(validarUsuario,crearUsuario);
+router.route('/nuevo').post(validarUsuario,crearUsuario);
 router.route('/').get(obtenerUsuarios);
 router.route('/:id').get(obtenerUsuario).put(validarUsuario,modificarUsuario).delete(eliminarUsuario);
 

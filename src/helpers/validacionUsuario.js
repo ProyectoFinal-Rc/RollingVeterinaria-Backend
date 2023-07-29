@@ -3,10 +3,10 @@ import resultadoValidacion from "./resultadoValidacion";
 
 const validarTarea = [
     check("nombreUsuario")
-      .notEmpty()
-      .withMessage("El nombre de usuario es obligatorio")
-      .isLength({ min: 2, max: 20 })
-      .withMessage("El nombre de usuario debe tener entre 2 y 20 caracteres como maximo"),
+        .notEmpty()
+        .withMessage("El nombre de usuario es obligatorio")
+        .isLength({ min: 2, max: 20 })
+        .withMessage("El nombre de usuario debe tener entre 2 y 20 caracteres como maximo"),
     check('email')
         .notEmpty()
         .withMessage('El email es un obligatorio')
@@ -22,7 +22,7 @@ const validarTarea = [
         .withMessage("El tipo es obligatorio")
         .isLength({ min: 4, max: 20 })
         .withMessage("El tipo debe tener entre 4 y 20 caracteres como maximo"),
-    (req, res, next )=>{ resultadoValidacion(req, res, next) }
-  ]
+    (req, res, next) => { resultadoValidacion(req, res, next) }
+]
 
-  export default validarTarea;
+export default validarTarea;

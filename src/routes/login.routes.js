@@ -4,7 +4,7 @@ import validarUsuario from "../helpers/validacionUsuario";
 
 const router = Router();
 
-router.route('/').post(validarUsuario,loguearUsuario);
+router.route('/').post(loguearUsuario);
 router.route('/check-admin').post(checkTokenAdmin);
 router.route('/check').post(checkTokenUser);
 

@@ -4,8 +4,7 @@ import validacionPacientes from "../helpers/validacionPacientes";
 
 const router = Router();
 
-router.route('/nuevo').post(validacionPacientes,crearPaciente);
-router.route('/').get(obtenerPacientes);
+router.route('/').get(obtenerPacientes).post(validacionPacientes,crearPaciente);
 router.route('/:id').get(obtenerPaciente).put(validacionPacientes,editarPaciente).delete(borrarPaciente);
 
 

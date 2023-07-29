@@ -26,9 +26,7 @@ const validarTurno = [
 
     check("fecha")
         .notEmpty()
-        .withMessage("La fecha es obligatoria")
-        .matches(/^(?:\d{4})\/(?:0[1-9]|1[0-2])\/(?:0[1-9]|[1-2][0-9]|3[0-1])$/)
-        .withMessage("La fecha debe tener el siguiente formato AAAA/MM/DD"),
+        .withMessage("La fecha es obligatoria"),
 
     check("hora")
         .notEmpty()

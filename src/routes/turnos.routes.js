@@ -4,8 +4,7 @@ import validacionTurnos from "../helpers/validacionTurnos";
 
 const router = Router();
 
-router.route('/crearTurno').post(validacionTurnos,crearTurno);
-router.route('/').get(obtenerTurnos);
+router.route('/').get(obtenerTurnos).post(validacionTurnos,crearTurno);
 router.route('/:id').get(obtenerTurno).put(validacionTurnos,editarTurno).delete(borrarTurno);
 
 

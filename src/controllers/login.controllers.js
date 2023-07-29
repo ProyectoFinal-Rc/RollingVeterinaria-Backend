@@ -22,7 +22,7 @@ export const loguearUsuario = async (req, res) => {
           process.env.SECRET_KEY
         );
         if (token) {
-          res.status(200).json({ mensaje: "contraseña ok", token });
+          res.status(200).json({ mensaje: "contraseña ok", token,usuario });
         } else {
           res.status(500).json({ mensaje: "error al generer token" });
         }

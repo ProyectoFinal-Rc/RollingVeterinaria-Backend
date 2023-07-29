@@ -28,4 +28,7 @@ app.use('/api/usuario', usuariosRouter)
 app.use("/api/turnos",turnosRouter)
 app.use("/api/pacientes",pacientesRouter)
 //Rutas
-//http://localhost:4000/
+//http://localhost:4000/api/auth
+//http://localhost:4000/api/usuario
+//http://localhost:4000/turnos
+//http://localhost:4000/pacientes

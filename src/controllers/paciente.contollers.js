@@ -3,6 +3,8 @@ import Paciente from "../models/paciente";
 export const crearPaciente = async (req, res) => {
   try {
     const PacienteNuevo = new Paciente(req.body);
+    console.log(req.body);
+    console.log(PacienteNuevo);
     await PacienteNuevo.save();
     res.status(201).json({
       mensaje: "El Paciente se creo con exito.",

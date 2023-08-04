@@ -39,11 +39,15 @@ const publicacionSchema = new Schema({
         type: Date,
         required:false
     },
+    active:{
+        type: Boolean,
+        default: false
+    },
     tags: [{ 
         type: String,
         validate: {
           validator: function(v,x,z) {
-              return !(this.tags.length > 3);  
+              return (this.tags.length <= 3);
           }, 
           message: props => `${props.value} exceeds maximum array size (10)!`
         },

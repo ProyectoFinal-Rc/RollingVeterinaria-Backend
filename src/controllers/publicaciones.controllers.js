@@ -33,6 +33,38 @@ export const obtenerPublicaciones = async (req, res) => {
   }
 };
 
+// READ
+export const filtrarPublicaciones = async (req, res) => {
+  
+  try{//{ name: { $regex: /john/i }
+    const publicaciones = await Publicacion.find({titulo: new RegExp(req.body.titulo || '', 'i')});
+    if(publicaciones){
+      res.status(200).json(publicaciones);
+    }else{
+      res.status(404).json({mensaje:'no se encontró nada'});
+    }    
+  }catch(error){
+    res.status(400).json({
+      mensaje: 'Error al buscar las publicaciones '+error.message,
+    });
+  }
+};
+
+export const obtenerPublicacionesActivas = async (req, res) => {
+  try{
+    const publicaciones = await Publicacion.find({active:true});
+    if(publicaciones){
+      res.status(200).json(publicaciones);
+    }else{
+      res.status(404).json({mensaje:'no se encontró nada'});
+    }    
+  }catch(error){
+    res.status(400).json({
+      mensaje: 'Error al buscar las publicaciones asd'+error.message,
+    });
+  }
+};
+
 export const obtenerPublicacion = async (req, res) => {
   try{
     const publicacion = await Publicacion.findById(req.params.id);
@@ -64,7 +96,29 @@ export const modificarPublicacion = async (req, res) => {
   }
 };
 
-// HABILITAR PUBLICACION - ENVIAR NOTIFICACION - MODIFICAR ESTADO
+// ACTIVAR PUBLICACION
+export const activarPublicacion = async (req, res) => {  
+  //req.body.active = true;
+  try{
+    const publicacion = await Publicacion.findByIdAndUpdate(req.params.id, {active:req.body.active});
+    if(publicacion){
+      if(req.body.active){
+        res.status(200).json({mensaje:'publicación activada, visible!', activa:true});
+      }else{
+        res.status(200).json({mensaje:'publicación desactivada, oculta!', activa:false});
+      }
+      
+    }else{
+      res.status(404).json({mensaje:'no se encontró nada'});
+    }    
+  }catch(error){
+    res.status(400).json({
+      mensaje: 'Error al modificar la publicacion '+error.message,
+    });
+  }
+}
+
+// ENVIAR NOTIFICACION - MODIFICAR ESTADO
 export const habilitarPublicacion = async (req, res) => {
   let d = new Date(); let n = d.toISOString();
   req.body.push_date = n;

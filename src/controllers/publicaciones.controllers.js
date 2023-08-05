@@ -11,7 +11,7 @@ export const crearPublicacion = async (req, res) => {
       res.status(404).json({mensaje:'no se encontró nada'});
     }    
   }catch(error){
-    res.status(400).json({
+    res.status(500).json({
       mensaje: 'Error al crear la publicacion '+error.message,
     });
   }
@@ -27,7 +27,7 @@ export const obtenerPublicaciones = async (req, res) => {
       res.status(404).json({mensaje:'no se encontró nada'});
     }    
   }catch(error){
-    res.status(400).json({
+    res.status(500).json({
       mensaje: 'Error al buscar las publicaciones '+error.message,
     });
   }
@@ -44,7 +44,7 @@ export const filtrarPublicaciones = async (req, res) => {
       res.status(404).json({mensaje:'no se encontró nada'});
     }    
   }catch(error){
-    res.status(400).json({
+    res.status(500).json({
       mensaje: 'Error al buscar las publicaciones '+error.message,
     });
   }
@@ -59,7 +59,7 @@ export const obtenerPublicacionesActivas = async (req, res) => {
       res.status(404).json({mensaje:'no se encontró nada'});
     }    
   }catch(error){
-    res.status(400).json({
+    res.status(500).json({
       mensaje: 'Error al buscar las publicaciones asd'+error.message,
     });
   }
@@ -74,7 +74,7 @@ export const obtenerPublicacion = async (req, res) => {
       res.status(404).json({mensaje:'no se encontró nada'});
     }    
   }catch(error){
-    res.status(400).json({
+    res.status(500).json({
       mensaje: 'Error al buscar la publicación '+error.message,
     });
   }
@@ -90,7 +90,7 @@ export const modificarPublicacion = async (req, res) => {
       res.status(404).json({mensaje:'no se encontró nada'});
     }    
   }catch(error){
-    res.status(400).json({
+    res.status(500).json({
       mensaje: 'Error al modificar la publicacion '+error.message,
     });
   }
@@ -112,7 +112,7 @@ export const activarPublicacion = async (req, res) => {
       res.status(404).json({mensaje:'no se encontró nada'});
     }    
   }catch(error){
-    res.status(400).json({
+    res.status(500).json({
       mensaje: 'Error al modificar la publicacion '+error.message,
     });
   }
@@ -130,7 +130,7 @@ export const habilitarPublicacion = async (req, res) => {
       res.status(404).json({mensaje:'no se encontró nada'});
     }    
   }catch(error){
-    res.status(400).json({
+    res.status(500).json({
       mensaje: 'Error al modificar la publicacion '+error.message,
     });
   }
@@ -148,7 +148,8 @@ export const eliminarPublicacion = async (req, res) => {
       res.status(404).json({mensaje:'no se encontró nada'});
     }    
   }catch(error){
-    res.status(400).json({
+    res.status(500).json({
+      error:true, 
       mensaje: 'Error al eliminar la publicacion '+error.message,
     });
   }

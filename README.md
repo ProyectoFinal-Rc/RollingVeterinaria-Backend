@@ -34,13 +34,13 @@ Bienvenido a RollingVet! Este proyecto es una aplicación web diseñada para fac
 
 `git clone` https://github.com/ProyectoFinal-Rc/RollingVeterinaria-Backend.git
 
-`2. Ve al directorio del proyecto:`
+2. Ve al directorio del proyecto:
    
-cd RollingVeterinaria-Backend
+`cd RollingVeterinaria-Backend`
 
-`3. Instala las dependencias:`
+3. Instala las dependencias:
 
-npm install
+`npm install`
 
 ## Uso
 
@@ -52,7 +52,6 @@ npm install
 ![MONGO](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![EXPRESS](https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![BABEL](https://img.shields.io/badge/Babel-F9DC3E?style=for-the-badge&logo=babel&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 
 ## Contribuciones
 

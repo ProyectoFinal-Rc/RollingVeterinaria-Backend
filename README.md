@@ -38,7 +38,12 @@ Bienvenido a RollingVet! Este proyecto es una aplicación web diseñada para fac
    
 `cd RollingVeterinaria-Backend`
 
-3. Instala las dependencias:
+3. Si no tienes instalado en tu computadora Nodemon, por favor ingresa el siguiente comando:
+(En caso de ya haberlo instalado, saltea este paso y sigue con el número 4)
+
+`npm install -g nodemon`
+
+4. Instala las dependencias:
 
 `npm install`
 

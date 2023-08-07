@@ -9,6 +9,7 @@ const validarTurno = [
         .withMessage(
             "El detalle de la cita debe tener entre 2 y 100 caracteres como maximo"
         ),
+
     check("veterinario")
         .notEmpty()
         .withMessage("El veterinario es obligatorio")

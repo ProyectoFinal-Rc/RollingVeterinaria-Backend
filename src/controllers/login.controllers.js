@@ -4,7 +4,6 @@ import { sign, verify } from "jsonwebtoken";
 import { genSaltSync, hashSync, compare, compareSync } from "bcryptjs";
 import { adminTokenStatus, userTokenStatus } from "../helpers/tokenFunctions";
 
-// CREATE
 export const loguearUsuario = async (req, res) => {
   try {
     const usuario = await Usuario.findOne({ email: req.body.email });
@@ -12,7 +11,7 @@ export const loguearUsuario = async (req, res) => {
       if (compareSync(req.body.password, usuario.password)) {
         let token = sign(
           {
-            exp: Math.floor(Date.now() / 1000) + 60 * 60 * 4, //60 * 60 * 12 = 12hs
+            exp: Math.floor(Date.now() / 1000) + 60 * 60 * 4,
             data: {
               nombreUsuario: usuario.nombreUsuario,
               email: usuario.email,

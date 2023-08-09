@@ -1,7 +1,7 @@
 import Usuario from "../models/usuario";
 import { genSaltSync, hashSync } from "bcryptjs";
 
-// CREATE
+
 export const crearUsuario = async (req, res) => {
   try {
     const salt = genSaltSync(10);
@@ -19,7 +19,7 @@ export const crearUsuario = async (req, res) => {
   }
 };
 
-// READ
+
 export const obtenerUsuarios = async (req, res) => {
   try {
     const usuarios = await Usuario.find().select("-password");
@@ -50,7 +50,7 @@ export const obtenerUsuario = async (req, res) => {
   }
 };
 
-// UPDATE
+
 export const modificarUsuario = async (req, res) => {
   try {
     const salt = genSaltSync(10);
@@ -73,10 +73,9 @@ export const modificarUsuario = async (req, res) => {
   }
 };
 
-// DELETE
+
 export const eliminarUsuario = async (req, res) => {
   try {
-    //const usuario = await Usuario.findById(req.params.id);
     const usuario = await Usuario.findByIdAndDelete(req.params.id);
     if (usuario) {
       res.status(200).json({mensaje:"Se eliminó correctamente"});

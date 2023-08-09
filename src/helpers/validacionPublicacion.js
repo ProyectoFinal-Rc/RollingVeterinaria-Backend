@@ -3,10 +3,10 @@ import resultadoValidacion from "./resultadoValidacion";
 
 const validarTarea = [
     check("titulo")
-      .notEmpty()
-      .withMessage("El titulo es obligatorio")
-      .isLength({ min: 2, max: 20 })
-      .withMessage("El titulo debe tener entre 2 y 20 caracteres como maximo"),
+        .notEmpty()
+        .withMessage("El titulo es obligatorio")
+        .isLength({ min: 2, max: 20 })
+        .withMessage("El titulo debe tener entre 2 y 20 caracteres como maximo"),
     check('contenido')
         .notEmpty()
         .withMessage('El contenido es obligatorio')
@@ -18,12 +18,12 @@ const validarTarea = [
         .isLength({ min: 10, max: 550 })
         .withMessage("La imagen debe tener entre 8 y 20 caracteres como maximo"),
     check('tags')
-        .custom((value)=>{
+        .custom((value) => {
             if (Array.isArray(value) && value.length <= 3) {
                 return true;
             }
         }),
-    (req, res, next )=>{ resultadoValidacion(req, res, next) }
-  ]
+    (req, res, next) => { resultadoValidacion(req, res, next) }
+]
 
-  export default validarTarea;
+export default validarTarea;

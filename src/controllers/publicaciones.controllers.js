@@ -1,8 +1,6 @@
 import Publicacion from '../models/publicacion';
 
-// CREATE
 export const crearPublicacion = async (req, res) => {
-  //res.status(200).json(req.body);
   try{
     const publicacion = await Publicacion.create(req.body);
     if(publicacion){
@@ -17,7 +15,6 @@ export const crearPublicacion = async (req, res) => {
   }
 };
 
-// READ
 export const obtenerPublicaciones = async (req, res) => {
   try{
     const publicaciones = await Publicacion.find();
@@ -33,10 +30,9 @@ export const obtenerPublicaciones = async (req, res) => {
   }
 };
 
-// READ
 export const filtrarPublicaciones = async (req, res) => {
   
-  try{//{ name: { $regex: /john/i }
+  try{
     const publicaciones = await Publicacion.find({titulo: new RegExp(req.body.titulo || '', 'i')});
     if(publicaciones){
       res.status(200).json(publicaciones);
@@ -80,7 +76,6 @@ export const obtenerPublicacion = async (req, res) => {
   }
 };
 
-// UPDATE
 export const modificarPublicacion = async (req, res) => {
   try{
     const publicacion = await Publicacion.findByIdAndUpdate(req.params.id, req.body);
@@ -96,9 +91,7 @@ export const modificarPublicacion = async (req, res) => {
   }
 };
 
-// ACTIVAR PUBLICACION
 export const activarPublicacion = async (req, res) => {  
-  //req.body.active = true;
   try{
     const publicacion = await Publicacion.findByIdAndUpdate(req.params.id, {active:req.body.active});
     if(publicacion){
@@ -118,7 +111,7 @@ export const activarPublicacion = async (req, res) => {
   }
 }
 
-// ENVIAR NOTIFICACION - MODIFICAR ESTADO
+
 export const habilitarPublicacion = async (req, res) => {
   let d = new Date(); let n = d.toISOString();
   req.body.push_date = n;
@@ -137,10 +130,9 @@ export const habilitarPublicacion = async (req, res) => {
 };
 
 
-// DELETE
+
 export const eliminarPublicacion = async (req, res) => {
   try{
-    //const usuario = await Publicacion.findById(req.params.id);
     const publicacion = await Publicacion.findByIdAndDelete(req.params.id);
     if(publicacion){
       res.status(200).json({mensaje:"Publicacion eliminada"});

@@ -1,70 +1,53 @@
 import { Schema, model } from 'mongoose';
 
-/* 
-    "titulo":
-    "contenido":
-    "url":
-    "imagen":
-    "fecha":
-    "notificado":
-    "tags":
-    "estado":
-*/
-
 const publicacionSchema = new Schema({
-    titulo:{
+    titulo: {
         type: String,
-        minLength:2,
-        maxLength:20,
-        required:true
+        minLength: 2,
+        maxLength: 20,
+        required: true
     },
-    contenido:{
+    contenido: {
         type: String,
-        minLength:10,
-        maxLength:550,
-        required:true,
+        minLength: 10,
+        maxLength: 550,
+        required: true,
     },
-    url:{
+    url: {
         type: String,
-        minLength:10,
-        maxLength:550,
+        minLength: 10,
+        maxLength: 550,
     },
-    imagen:{
+    imagen: {
         type: String,
-        minLength:10,
-        maxLength:550,
-        required:false,
+        minLength: 10,
+        maxLength: 550,
+        required: false,
     },
-    push_date:{
+    push_date: {
         type: Date,
-        required:false
+        required: false
     },
-    active:{
+    active: {
         type: Boolean,
         default: false
     },
-    tags: [{ 
+    tags: [{
         type: String,
         validate: {
-          validator: function(v,x,z) {
-              return (this.tags.length <= 3);
-          }, 
-          message: props => `${props.value} exceeds maximum array size (10)!`
+            validator: function (v, x, z) {
+                return (this.tags.length <= 3);
+            },
+            message: props => `${props.value} exceeds maximum array size (10)!`
         },
         required: true
     }],
-    /*tags:{
-        type: String,
-        minLength:4,
-        maxLength:20,
-        required:true
-    },*/
-    push:{
+    push: {
         type: Boolean,
-        required:false,
+        required: false,
         default: false
     }
 }, { timestamps: true });
 
-const Publicacion = model('publicacion',publicacionSchema);
+const Publicacion = model('publicacion', publicacionSchema);
 export default Publicacion;

@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { loguearUsuario, checkTokenAdmin, checkTokenUser } from "../controllers/login.controllers";
-import validarUsuario from "../helpers/validacionUsuario";
 
 const router = Router();
 

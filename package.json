@@ -8,7 +8,7 @@
     "dev": "nodemon --exec babel-node index.js"
   },
   "keywords": [],
-  "author": "Cristian Gramajo",
+  "author": "Alba Juan Pablo, de Arriba Malena, Gomez Facundo, Gramajo Cristian, Llanos Juan Pablo, Soria Mauricio",
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.26.0",

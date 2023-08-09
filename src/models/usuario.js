@@ -1,24 +1,5 @@
 import { Schema, model } from "mongoose";
 
-/* 
-    nombreUsuario
-    email
-    password
-    tipo
-    datos: {
-        nombreDuenio
-        apellidoDuenio
-        email
-        direccion
-        nombreMascota
-        especie
-        raza
-        fechaNacimiento
-        peso
-        plan
-    }
-*/
-
 const usuarioSchema = new Schema({
   nombreUsuario: {
     type: String,

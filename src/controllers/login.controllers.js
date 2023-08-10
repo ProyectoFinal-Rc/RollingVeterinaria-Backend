@@ -41,7 +41,7 @@ export const loguearUsuario = async (req, res) => {
 export const checkTokenAdmin = async (req, res) => {
   try {
     if (adminTokenStatus(req.headers["x-token"], process.env.SECRET_KEY)) {
-      res.status(200).json({ mensaje: "token valido", error:false });
+      res.status(200).json({ mensaje: "token valido", error:false }); 
     } else {
       res
         .status(401)

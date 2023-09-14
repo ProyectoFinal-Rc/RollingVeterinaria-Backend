@@ -1,7 +1,7 @@
 import { validationResult } from "express-validator";
 import Usuario from "../models/usuario";
-import { sign, verify } from "jsonwebtoken";
-import { genSaltSync, hashSync, compare, compareSync } from "bcryptjs";
+import { sign } from "jsonwebtoken";
+import { compareSync } from "bcryptjs";
 import { adminTokenStatus, userTokenStatus } from "../helpers/tokenFunctions";
 
 export const loguearUsuario = async (req, res) => {

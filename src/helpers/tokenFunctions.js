@@ -3,7 +3,6 @@ export function userTokenStatus(token, llave){
     try {
         const decoded = verify(token, llave);
         if(decoded){
-          console.log(decoded)
           if(decoded.data.tipo == 'comun'){
             return true;
           }else{
